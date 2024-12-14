@@ -22,7 +22,7 @@ A simplified Airbnb clone built with the MERN stack, featuring secure user authe
 - MongoDB database setup (local or cloud-based).
 ## Steps:
 - Clone the repository:<br>
-   git clone https://github.com/your-username/airbnb-clone.git <br> 
+   git clone https://github.com/Akshaya0206/airbnb-clone.git <br> 
 - Navigate to the project directory:<br>
 cd airbnb-clone  <br>
 - Install server dependencies:<br>
