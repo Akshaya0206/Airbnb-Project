@@ -7,6 +7,10 @@ const listingschema = new Schema({
         required:true
     },
     description: String,
+    category:{
+        type:String,
+        required:true,
+    },
     image:{
         url:String,
         filename:String,
@@ -28,13 +32,14 @@ const listingschema = new Schema({
         type:{
             type:String,
             enum:["Point"],
-            required:true,
+            // required:true,
         },
         coordinates:{
             type:[Number],
-            required:true,
+            // required:true,
         },
     },
+    
 });
 
 listingschema.post("findOneAndDelete",async(data)=>{

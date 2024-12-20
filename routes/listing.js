@@ -16,7 +16,12 @@ router
 
 //new route
 router.get("/new",isLoggedin,listingController.renderNewForm);
-
+router
+    .route("/category/:category")
+    .get(listingController.categoryListings)
+router
+    .route("/search")
+    .post(isLoggedin,wrapAsync(listingController.searchListing))
 router
     .route("/:id")
     .get(wrapAsync(listingController.showListing))
@@ -25,6 +30,5 @@ router
 
 //edit route
 router.get("/:id/edit",isowner,isLoggedin,wrapAsync(listingController.renderEditForm));
-
 
 module.exports=router;

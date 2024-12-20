@@ -1,5 +1,9 @@
 const listing = require("../models/listing.js");
 const forwardGeocode = require('./geocoding');
+const express = require("express");
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+
 module.exports.index=async (req,res)=>{
     const allListings = await listing.find({});
     res.render("listings/index.ejs",{allListings});
@@ -8,7 +12,31 @@ module.exports.index=async (req,res)=>{
 module.exports.renderNewForm=(req,res)=>{
     res.render("listings/new.ejs");
 }
+module.exports.categoryListings=async(req,res)=>{
+    let cat=req.params.category
+    console.log(cat);
+        const categorylistings= await listing.find({category:`${cat}`});
+        console.log(categorylistings);
+        if (categorylistings.length === 0) {
+            req.flash("error", "Listings are not available in this category!");
+            return res.redirect('/listings'); 
+          }
+        res.render("listings/category.ejs",{categorylistings,category:`${cat}`});        
+}
+module.exports.searchListing=async(req,res)=>{
+    let listtitle=req.body.title;
+    console.log(req.body);
+    let list= await listing.find({title:listtitle});
+    console.log(list);
+    if(!list){
+        req.flash("error","Listing you requested for does not exist!");
+        res.redirect("/listings");
+    }
+    let id=list[0]._id;
+    console.log(list[0]._id);
+    res.redirect(`/listings/${id}`);
 
+}
 module.exports.showListing = async (req,res)=>{
     let {id} = req.params;
     let list = await listing.findById(id)
