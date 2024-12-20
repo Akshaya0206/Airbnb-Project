@@ -9,7 +9,7 @@ const listingschema = new Schema({
     description: String,
     category:{
         type:String,
-        required:true,
+        // required:true,
     },
     image:{
         url:String,
