@@ -15,13 +15,13 @@ module.exports.renderNewForm=(req,res)=>{
 module.exports.categoryListings=async(req,res)=>{
     let cat=req.params.category
     console.log(cat);
-        const categorylistings= await listing.find({category:`${cat}`});
+        const categorylistings= await listing.find({category:cat});
         console.log(categorylistings);
         if (categorylistings.length === 0) {
             req.flash("error", "Listings are not available in this category!");
             return res.redirect('/listings'); 
           }
-        res.render("listings/category.ejs",{categorylistings,category:`${cat}`});        
+        res.render("listings/category.ejs",{categorylistings,category:cat});        
 }
 module.exports.searchListing=async(req,res)=>{
     let listtitle=req.body.title;
