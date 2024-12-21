@@ -9,7 +9,7 @@ const listingschema = new Schema({
     description: String,
     category:{
         type:String,
-        // required:true,
+        required:true,
     },
     image:{
         url:String,
@@ -32,11 +32,11 @@ const listingschema = new Schema({
         type:{
             type:String,
             enum:["Point"],
-            // required:true,
+            required:true,
         },
         coordinates:{
             type:[Number],
-            // required:true,
+            required:true,
         },
     },
     
