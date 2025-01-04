@@ -81,7 +81,6 @@ module.exports.createListing=async(req,res,next)=>{
     let filename=req.file.filename;
     let newlist = new listing(req.body.listing);
     newlist.owner = req.user._id;
-    newlist.category=req.body.category;
     newlist.image={url,filename};
     newlist.geometry = {type:geotype,coordinates:geocoordinates };
     let newlisting= await newlist.save();
