@@ -104,6 +104,7 @@ module.exports.renderEditForm = async (req,res)=>{
 
 module.exports.updateListing=async(req,res)=>{
     let {id} = req.params;
+    console.log(id);
     let list=await listing.findByIdAndUpdate(id,{...req.body.listing});
     if(req.file !== "undefined"){
         let url=req.file.path;
