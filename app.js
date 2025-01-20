@@ -35,7 +35,7 @@ main()
     console.log(err);
 });
 async function main(){
-    await mongoose.connect(dbUrl);
+    await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust");
 }
 
 const store = MongoStore.create({
@@ -63,14 +63,15 @@ const sessionOptions = {
 app.use(session(sessionOptions));
 app.use(flash());
 
+passport.use(new localStrategy(user.authenticate()));
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new localStrategy(user.authenticate()));
 
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 
 app.use((req,res,next)=>{
+    console.log(req.user);
     console.log(req.user);
     res.locals.success=req.flash("success");
     res.locals.error=req.flash("error");
@@ -89,6 +90,7 @@ app.all("*",(req,res,next)=>{
 });
 app.use((err,req,res,next)=>{
     let {statusCode=500,message="Something went wrong!"}=err;
+    res.render("/listings/index.ejs");
     res.status(statusCode).render("listings/error.ejs",{message});
 });
 app.listen(8080,()=>{

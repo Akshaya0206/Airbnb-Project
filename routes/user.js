@@ -19,7 +19,7 @@ router
     "local",
     {
         failureRedirect:"/login",
-        failureFlash:true
+        failureFlash:true,
     }),userController.login);
 
 router.get("/logout",userController.logout);
