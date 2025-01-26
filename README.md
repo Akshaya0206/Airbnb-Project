@@ -51,7 +51,5 @@ Property Listings with Map Integration <br>
 ## Future Enhancements 
 Add a booking system for properties.<br>
 Implement advanced search filters (location, price range, etc.). <br>
-## Contributing 
-Contributions are welcome! If you have suggestions or want to report a bug, feel free to open an issue or submit a pull request.
 
 
