@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/css/style.css">
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top"style="background-color: #ffffff;" data-bs-theme="light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" >
@@ -10,18 +10,19 @@
           <a class="nav-link" href="/listings">Explore</a>
         </div>
         <div class="navbar-nav ms-auto">
-          <form class="d-flex" role="search" method="post" action="/listings/search">
+          <form class="d-flex" role="search" method="get" action="/listings/search">
             <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations" name="title" aria-label="Search">
             <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
           </form>
            </div>
         <div class="navbar-nav ms-auto">
           <a class="nav-link" href="/listings/new">Airbnb your home</a>
-          <% if(!curruser) { %>
+          <i class="fa-solid fa-globe" style="line-height: 42px;margin-left: 11px;margin-right: 11px;"></i>
+          <%if(!curruser) { %>
           <a class="nav-link "  href="/signup"><b>Sign up</b></a>
           <a class="nav-link" href="/login"><b>Login</b></a>
           <%}%>
-          <% if(curruser) {%>
+           <%if(curruser) {%>
           <a class="nav-link" href="/logout"><b>Logout</b></a>
           <%}%>
         </div>

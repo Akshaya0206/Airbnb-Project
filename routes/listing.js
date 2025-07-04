@@ -17,11 +17,8 @@ router
 //new route
 router.get("/new",isLoggedin,listingController.renderNewForm);
 router
-    .route("/category/:category")
-    .get(listingController.categoryListings)
-router
     .route("/search")
-    .post(isLoggedin,wrapAsync(listingController.searchListing))
+    .get(isLoggedin,wrapAsync(listingController.searchListing))
 router
     .route("/:id")
     .get(wrapAsync(listingController.showListing))
